@@ -39,12 +39,12 @@ const Converters = (() => {
 
   // Detecta la URL base del backend automáticamente
   const BACKEND_URL = (() => {
-    // Si alojas el proyecto COMPLETO (Frontend + Backend) en Render a través de app.py,
-    // el frontend y el backend comparten la misma URL, por lo que location.origin funciona perfecto.
+    // Si estás desarrollando localmente
     if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
       return 'http://localhost:5000';
     }
-    return location.origin;
+    // URL de producción en Railway
+    return 'https://backend-02-production.up.railway.app';
   })();
 
   async function pdfToWord(file, onP) {
