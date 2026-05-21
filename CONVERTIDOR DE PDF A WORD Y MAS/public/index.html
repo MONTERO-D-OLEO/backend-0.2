@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ConvertidorPro — Convierte PDF a Word, imágenes a PDF, une, comprime y más. Gratis, rápido y privado.">
+  <meta name="theme-color" content="#0F172A">
+  <link rel="manifest" href="./manifest.json">
+  <title>ConvertidorPro — Conversor de Archivos Gratis</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="https://unpkg.com/mammoth@1.8.0/mammoth.browser.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="https://unpkg.com/docx@7.8.2/build/index.js"></script>
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+<nav class="navbar" id="navbar"><div class="navbar-inner">
+  <a href="./index.html" class="logo"><div class="logo-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14,2 14,8 20,8"/><path d="M12 18v-6"/><path d="M9 15l3-3 3 3"/></svg></div><span class="logo-text">Convertidor<span class="logo-accent">Pro</span></span></a>
+  <div class="navbar-actions">
+    <div class="conversion-counter" id="conversion-counter" title="Conversiones realizadas"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span id="counter-value">0</span></div>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema">
+      <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</div></nav>
+
+<main>
+<!-- Hero -->
+<section class="hero" id="hero">
+  <canvas class="hero-particles" id="hero-particles"></canvas>
+  <div class="hero-bg"><div class="hero-glow hero-glow-1"></div><div class="hero-glow hero-glow-2"></div></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge"><span class="badge-dot"></span>100% Gratis — Sin Límites — Sin Registro</div>
+      <h1 class="hero-title">Convierte tus archivos<br><span class="gradient-text">al instante</span></h1>
+      <p class="hero-subtitle">9 herramientas poderosas. Todo se procesa en tu navegador — tus archivos nunca salen de tu dispositivo.</p>
+      <a href="#herramientas" class="hero-cta">Comenzar ahora <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- Tools -->
+<section class="tools-section" id="herramientas"><div class="container">
+  <div class="section-header"><h2 class="section-title">Herramientas disponibles</h2><p class="section-desc">9 herramientas profesionales, totalmente gratuitas</p></div>
+  <div class="tools-grid" id="tools-grid">
+    <button class="tool-card" data-tool="pdf-to-word"><div class="tool-icon tool-icon-red"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14,2 14,8 20,8"/></svg></div><h3 class="tool-title">PDF a Word</h3><p class="tool-desc">Convierte PDF a Word editable</p></button>
+    <button class="tool-card" data-tool="word-to-pdf"><div class="tool-icon tool-icon-blue"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14,2 14,8 20,8"/><path d="M9 15h6M9 11h6"/></svg></div><h3 class="tool-title">Word a PDF</h3><p class="tool-desc">Convierte Word a PDF profesional</p></button>
+    <button class="tool-card" data-tool="image-to-pdf"><div class="tool-icon tool-icon-green"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div><h3 class="tool-title">Imagen a PDF</h3><p class="tool-desc">JPG o PNG a documento PDF</p></button>
+    <button class="tool-card" data-tool="merge-pdf"><div class="tool-icon tool-icon-purple"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="8" height="10" rx="1"/><rect x="14" y="3" width="8" height="10" rx="1"/><path d="M10 8h4M6 17v4h12v-4M12 13v8"/></svg></div><h3 class="tool-title">Unir PDFs</h3><p class="tool-desc">Combina múltiples PDFs en uno</p></button>
+    <button class="tool-card" data-tool="compress-pdf"><div class="tool-icon tool-icon-orange"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14,2 14,8 20,8"/><path d="M12 11v6M9 14l3 3 3-3"/></svg></div><h3 class="tool-title">Comprimir PDF</h3><p class="tool-desc">Reduce el tamaño de tu PDF</p></button>
+    <button class="tool-card" data-tool="pdf-to-image"><div class="tool-icon tool-icon-cyan"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div><h3 class="tool-title">PDF a Imágenes</h3><p class="tool-desc">Extrae páginas como JPG</p></button>
+    <button class="tool-card" data-tool="rotate-pdf"><div class="tool-icon tool-icon-pink"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 2v6h-6"/><path d="M21 8A9 9 0 0 0 6 6L3 3"/><path d="M3 22v-6h6"/><path d="M3 16a9 9 0 0 0 15 2l3 3"/></svg></div><h3 class="tool-title">Rotar PDF</h3><p class="tool-desc">Gira las páginas de tu PDF</p></button>
+    <button class="tool-card" data-tool="extract-pages"><div class="tool-icon tool-icon-teal"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14,2 14,8 20,8"/><path d="M9 15l3 3 3-3"/></svg></div><h3 class="tool-title">Extraer Páginas</h3><p class="tool-desc">Selecciona páginas específicas</p></button>
+    <button class="tool-card" data-tool="watermark-pdf"><div class="tool-icon tool-icon-indigo"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3 class="tool-title">Marca de Agua</h3><p class="tool-desc">Agrega texto como marca de agua</p></button>
+  </div>
+</div></section>
+
+<!-- Converter workspace -->
+<section class="converter-section" id="converter-section" style="display:none"><div class="container">
+  <button class="back-btn" id="back-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg> Volver</button>
+  <div class="converter-card" id="converter-card">
+    <div class="converter-header"><h2 class="converter-title" id="converter-title">Convertir</h2><p class="converter-desc" id="converter-desc"></p></div>
+    <div class="drop-zone" id="drop-zone">
+      <div class="drop-zone-content">
+        <div class="drop-zone-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+        <p class="drop-zone-text">Arrastra tu archivo aquí</p>
+        <p class="drop-zone-subtext">o haz clic para seleccionar</p>
+        <p class="drop-zone-formats" id="drop-zone-formats"></p>
+      </div>
+      <input type="file" class="file-input" id="file-input" hidden>
+    </div>
+    <!-- Options panels -->
+    <div class="options-panel" id="quality-selector" style="display:none">
+      <label class="options-label">Nivel de compresión:</label>
+      <div class="quality-options">
+        <button class="quality-btn" data-quality="high"><span class="quality-name">Ligera</span><span class="quality-desc">Mejor calidad</span></button>
+        <button class="quality-btn active" data-quality="medium"><span class="quality-name">Equilibrada</span><span class="quality-desc">Recomendada</span></button>
+        <button class="quality-btn" data-quality="low"><span class="quality-name">Máxima</span><span class="quality-desc">Menor tamaño</span></button>
+      </div>
+    </div>
+    <div class="options-panel" id="rotate-options" style="display:none">
+      <label class="options-label">Ángulo de rotación:</label>
+      <div class="quality-options">
+        <button class="quality-btn active" data-angle="90"><span class="quality-name">90°</span><span class="quality-desc">Derecha</span></button>
+        <button class="quality-btn" data-angle="180"><span class="quality-name">180°</span><span class="quality-desc">Invertir</span></button>
+        <button class="quality-btn" data-angle="270"><span class="quality-name">270°</span><span class="quality-desc">Izquierda</span></button>
+      </div>
+    </div>
+    <div class="options-panel" id="extract-options" style="display:none">
+      <label class="options-label">Páginas a extraer: <span id="total-pages-info" class="options-hint"></span></label>
+      <input type="text" class="text-input" id="extract-input" placeholder="Ej: 1,3,5-8" autocomplete="off">
+    </div>
+    <div class="options-panel" id="watermark-options" style="display:none">
+      <label class="options-label">Texto de marca de agua:</label>
+      <input type="text" class="text-input" id="watermark-input" placeholder="CONFIDENCIAL" value="CONFIDENCIAL" maxlength="40" autocomplete="off">
+    </div>
+    <div class="file-preview" id="file-preview" style="display:none"><div class="preview-list" id="preview-list"></div></div>
+    <div class="progress-container" id="progress-container" style="display:none">
+      <div class="progress-info"><span class="progress-label" id="progress-label">Procesando...</span><span class="progress-percent" id="progress-percent">0%</span></div>
+      <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+    </div>
+    <button class="convert-btn" id="convert-btn" disabled><span id="convert-btn-text">Convertir ahora</span></button>
+    <div class="result-container" id="result-container" style="display:none">
+      <div class="result-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+      <h3 class="result-title">¡Conversión completada!</h3>
+      <p class="result-info" id="result-info"></p>
+      <div class="result-stats" id="result-stats"></div>
+      <button class="download-btn" id="download-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Descargar</button>
+      <button class="convert-another-btn" id="convert-another-btn">Convertir otro archivo</button>
+    </div>
+  </div>
+</div></section>
+
+<!-- How it works -->
+<section class="steps-section" id="como-funciona"><div class="container">
+  <div class="section-header"><h2 class="section-title">¿Cómo funciona?</h2><p class="section-desc">3 pasos simples, sin complicaciones</p></div>
+  <div class="steps-grid">
+    <div class="step-card"><div class="step-number">1</div><h3>Selecciona</h3><p>Elige la herramienta que necesitas y sube tu archivo</p></div>
+    <div class="step-arrow"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+    <div class="step-card"><div class="step-number">2</div><h3>Convierte</h3><p>Procesamos todo al instante en tu navegador</p></div>
+    <div class="step-arrow"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+    <div class="step-card"><div class="step-number">3</div><h3>Descarga</h3><p>Tu archivo se descarga automáticamente</p></div>
+  </div>
+</div></section>
+
+<!-- Features -->
+<section class="features-section" id="caracteristicas"><div class="container">
+  <div class="section-header"><h2 class="section-title">¿Por qué ConvertidorPro?</h2><p class="section-desc">Diseñado para superar a la competencia</p></div>
+  <div class="features-grid">
+    <div class="feature-card"><div class="feature-icon fi-speed"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><h3>Ultra Rápido</h3><p>Todo se procesa directamente en tu navegador. Sin esperas.</p></div>
+    <div class="feature-card"><div class="feature-icon fi-security"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div><h3>100% Privado</h3><p>Tus archivos nunca salen de tu dispositivo. Cero servidores.</p></div>
+    <div class="feature-card"><div class="feature-icon fi-free"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div><h3>Totalmente Gratis</h3><p>Sin costos, sin marcas de agua, sin límites de uso.</p></div>
+    <div class="feature-card"><div class="feature-icon fi-mobile"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div><h3>Funciona en Todo</h3><p>PC, tablet y teléfono. Sin instalar nada.</p></div>
+  </div>
+</div></section>
+
+<!-- Comparison -->
+<section class="comparison-section" id="comparacion"><div class="container">
+  <div class="section-header"><h2 class="section-title">ConvertidorPro vs la competencia</h2></div>
+  <div class="comparison-table-wrap">
+    <table class="comparison-table">
+      <thead><tr><th>Característica</th><th class="highlight">ConvertidorPro</th><th>iLovePDF</th><th>SmallPDF</th></tr></thead>
+      <tbody>
+        <tr><td>Precio</td><td class="highlight">✅ Gratis</td><td>Freemium</td><td>Freemium</td></tr>
+        <tr><td>Sin límite de archivos</td><td class="highlight">✅ Sí</td><td>❌ 2/hora gratis</td><td>❌ 2/día gratis</td></tr>
+        <tr><td>Privacidad total</td><td class="highlight">✅ Local</td><td>❌ Sube a servidor</td><td>❌ Sube a servidor</td></tr>
+        <tr><td>Sin registro</td><td class="highlight">✅ Sí</td><td>⚠️ Opcional</td><td>❌ Requiere cuenta</td></tr>
+        <tr><td>Velocidad</td><td class="highlight">✅ Instantánea</td><td>⚠️ Depende del server</td><td>⚠️ Depende del server</td></tr>
+        <tr><td>Funciona offline</td><td class="highlight">✅ Sí (PWA)</td><td>❌ No</td><td>❌ No</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div></section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq"><div class="container">
+  <div class="section-header"><h2 class="section-title">Preguntas frecuentes</h2></div>
+  <div class="faq-list" id="faq-list">
+    <div class="faq-item"><button class="faq-question">¿Es realmente gratis?<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-answer"><p>Sí, 100% gratis. Sin costos ocultos, sin suscripciones, sin límites. Todas las herramientas son completamente gratuitas.</p></div></div>
+    <div class="faq-item"><button class="faq-question">¿Mis archivos están seguros?<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-answer"><p>Sí. La mayoría de herramientas se procesan 100% en tu navegador. La conversión PDF a Word usa nuestro servidor para máxima calidad, pero tus archivos se borran automáticamente después de la conversión.</p></div></div>
+    <div class="faq-item"><button class="faq-question">¿Funciona sin internet?<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-answer"><p>Sí. Una vez cargada la página, puedes convertir archivos sin conexión gracias a la tecnología PWA.</p></div></div>
+    <div class="faq-item"><button class="faq-question">¿Cuál es el tamaño máximo de archivo?<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-answer"><p>El límite es de 500MB por archivo. Para archivos muy grandes, la velocidad dependerá de la potencia de tu dispositivo.</p></div></div>
+    <div class="faq-item"><button class="faq-question">¿Puedo usarlo en mi teléfono?<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-answer"><p>Sí, funciona perfectamente en cualquier dispositivo: PC, tablet o teléfono. La interfaz se adapta automáticamente.</p></div></div>
+    <div class="faq-item"><button class="faq-question">¿La calidad de conversión es buena?<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-answer"><p>Utilizamos librerías profesionales de código abierto. La conversión preserva el texto y la estructura básica del documento.</p></div></div>
+  </div>
+</div></section>
+
+<!-- History -->
+<section class="history-section" id="historial-section" style="display:none"><div class="container">
+  <div class="section-header"><h2 class="section-title">Historial reciente</h2><button class="clear-history-btn" id="clear-history">Limpiar historial</button></div>
+  <div class="history-list" id="history-list"></div>
+</div></section>
+</main>
+
+<footer class="footer"><div class="container">
+  <div class="footer-content">
+    <div class="footer-brand"><span class="logo-text">Convertidor<span class="logo-accent">Pro</span></span><p>Herramientas de conversión gratuitas y seguras.</p></div>
+    <div class="footer-privacy"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Procesamiento 100% local</div>
+  </div>
+  <div class="footer-bottom"><p>&copy; 2026 ConvertidorPro. Todos los derechos reservados.</p></div>
+</div></footer>
+
+<div class="toast-container" id="toast-container"></div>
+<canvas class="confetti-canvas" id="confetti-canvas"></canvas>
+
+<script src="./js/ui.js"></script>
+<script src="./js/converters.js"></script>
+<script src="./js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "ConvertidorPro",
+  "short_name": "ConvertPro",
+  "description": "Convierte PDF a Word, Word a PDF, imágenes a PDF, une y comprime PDFs gratis",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B1120",
+  "theme_color": "#2563EB",
+  "orientation": "any",
+  "lang": "es",
+  "categories": ["productivity", "utilities"],
+  "icons": [
+    { "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%232563EB'/><path d='M50 25L30 50h15v25h10V50h15z' fill='white'/></svg>", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}
